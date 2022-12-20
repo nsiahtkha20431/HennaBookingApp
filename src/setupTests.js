@@ -20,12 +20,12 @@ it('submits the form', () => {
       <App onSubmit={onSubmit} />
     );
   
-    const nameInput = getByLabelText('Name:');
-    const emailInput = getByLabelText('Email:');
+    const fnameInput = getByLabelText('First Name:');
+    const lnameInput = getByLabelText('Last Name:');
     const form = getByTestId('my-form');
   
-    fireEvent.change(nameInput, { target: { value: 'John' } });
-    fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
+    fireEvent.change(fnameInput, { target: { value: 'John' } });
+    fireEvent.change(lnameInput, { target: { value: 'john@example.com' } });
     fireEvent.submit(form);
   
     expect(onSubmit).toHaveBeenCalledWith({
