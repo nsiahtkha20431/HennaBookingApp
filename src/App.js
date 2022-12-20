@@ -4,8 +4,8 @@ import React from 'react';
 
 function App() {
   const initialFormData = Object.freeze({
-    username: "",
-    password: ""
+    fname: "",
+    lname: ""
   });
 
   const [formData, updateFormData] = React.useState(initialFormData);
