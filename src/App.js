@@ -1,16 +1,32 @@
 // import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 
 function App() {
+  const initialFormData = Object.freeze({
+    username: "",
+    password: ""
+  });
+
+  const [formData, updateFormData] = React.useState(initialFormData);
+
+  const handleChange = (e) => {
+    updateFormData({
+      ...formData,
+
+      // Trimming any whitespace
+      [e.target.name]: e.target.value.trim()
+    });
+  };
+    
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event.target.elements.fname.value) // from elements property
-    console.log(event.target.fname.value)          // or directly
+    // console.log("Nishat");
+    console.log(event.target.username.value);
   }
+  
   return (
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <p>My name is Nishat. Welcome to my henna booking form!</p>
         <p>Please complete the following details to create your booking: </p>
         <form>
@@ -21,19 +37,17 @@ function App() {
           <button type="button">5 pm</button><br></br>
           <button type="button">6 pm</button><br></br>
           
-          <label for="fname">First Name:</label>
-          <input type="text" id="fname" name="fname"></input><br></br>
-          <label for="lname">Last Name:</label>
-          <input type="text" id="lname" name="lname"></input><br></br>
-          <label for="phone">Phone Number</label>
-          <input type="text" id="phone" name="phone"></input><br></br>
-          <button type="button" onClick= {handleSubmit}>Book!</button>
+          <label htmlFor="fname">First Name:</label>
+          <input type="text" name="fname" onChange={handleChange}></input><br></br>
+          <label htmlFor="lname">Last Name:</label>
+          <input type="text" name="lname" onChange={handleChange}></input><br></br>
+          <label htmlFor="phone">Phone Number</label>
+          <input type="text" name="phone" onChange={handleChange}></input><br></br>
+          <button type="submit" onClick={handleSubmit}>Book!</button>
         </form>
       </header>
     </div>
   );
 }
-
-
 
 export default App;
