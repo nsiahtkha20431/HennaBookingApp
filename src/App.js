@@ -20,8 +20,11 @@ function App() {
   };
     
   const handleSubmit = (event) => {
-    // console.log("Nishat");
-    console.log(event.target.username.value);
+    event.preventDefault();
+    console.log(event.target.fname.value);
+    console.log(event.target.lname.value);
+    console.log(event.target.phone.value);
+
   }
   
   return (
@@ -29,7 +32,7 @@ function App() {
       <header className="App-header">
         <p>My name is Nishat. Welcome to my henna booking form!</p>
         <p>Please complete the following details to create your booking: </p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <button type="button">1 PM</button><br></br>
           <button type="button">2 PM</button><br></br>
           <button type="button">3 PM</button><br></br>
@@ -37,13 +40,13 @@ function App() {
           <button type="button">5 pm</button><br></br>
           <button type="button">6 pm</button><br></br>
           
-          <label htmlFor="fname">First Name:</label>
+          <label>First Name:</label>
           <input type="text" name="fname" onChange={handleChange}></input><br></br>
-          <label htmlFor="lname">Last Name:</label>
+          <label>Last Name:</label>
           <input type="text" name="lname" onChange={handleChange}></input><br></br>
-          <label htmlFor="phone">Phone Number</label>
+          <label>Phone Number</label>
           <input type="text" name="phone" onChange={handleChange}></input><br></br>
-          <button type="submit" onClick={handleSubmit}>Book!</button>
+          <button type="submit">Book!</button>
         </form>
       </header>
     </div>
