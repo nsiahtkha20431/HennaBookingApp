@@ -1,6 +1,10 @@
 // import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/Button';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 
 function App() {
   const initialFormData = Object.freeze({
@@ -20,30 +24,45 @@ function App() {
   };
     
   const handleSubmit = (event) => {
-    // console.log("Nishat");
-    console.log(event.target.username.value);
+    event.preventDefault();
+    console.log(event.target.fname.value);
+    console.log(event.target.lname.value);
+    console.log(event.target.phone.value);
+
   }
+
+  const choices = ['Bridal', 'Party', 'Bridal with party'];
   
   return (
     <div className="App">
       <header className="App-header">
         <p>My name is Nishat. Welcome to my henna booking form!</p>
         <p>Please complete the following details to create your booking: </p>
-        <form>
-          <button type="button">1 PM</button><br></br>
-          <button type="button">2 PM</button><br></br>
-          <button type="button">3 PM</button><br></br>
-          <button type="button">4 PM</button><br></br>
-          <button type="button">5 pm</button><br></br>
-          <button type="button">6 pm</button><br></br>
-          
-          <label htmlFor="fname">First Name:</label>
+        <form onSubmit={handleSubmit}>
+          <ButtonGroup size="large" aria-label="outlined primary button group" color="secondary" variant="text">
+            <Button type="button" variant="outlined" color="secondary">1 PM</Button>
+            <Button type="button" variant="outlined" color="secondary">2 PM</Button>
+            <Button type="button" variant="outlined" color="secondary">3 PM</Button>
+            <Button type="button" variant="outlined" color="secondary">4 PM</Button>
+            <Button type="button" variant="outlined" color="secondary">5 PM</Button>
+            <Button type="button" variant="outlined" color="secondary">6 PM</Button>
+          </ButtonGroup>
+
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={choices}
+            sx={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Booking Type" />}
+          />
+
+          <br></br><label>First Name: </label>
           <input type="text" name="fname" onChange={handleChange}></input><br></br>
-          <label htmlFor="lname">Last Name:</label>
+          <label>Last Name: </label>
           <input type="text" name="lname" onChange={handleChange}></input><br></br>
-          <label htmlFor="phone">Phone Number</label>
+          <label>Phone Number: </label>
           <input type="text" name="phone" onChange={handleChange}></input><br></br>
-          <button type="submit" onClick={handleSubmit}>Book!</button>
+          <Button variant="contained" color="secondary">Book!</Button>
         </form>
       </header>
     </div>
