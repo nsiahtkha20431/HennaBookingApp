@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import express from 'express';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,17 +10,6 @@ root.render(
     <App/>
   </React.StrictMode>
 );
-
-// const express = require('express');
-// const app = express();
-
-// app.get('/', (req, res) => {
-//   res.send('Hello, World!');
-// });
-
-// app.listen(3000, () => {
-//   console.log('Henna App listening on port 3000');
-// });
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
