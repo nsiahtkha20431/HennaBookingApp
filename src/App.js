@@ -7,7 +7,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
 function App() {
-  const initialFormData = Object.freeze({
+  const initialFormData = Object.freeze({ 
     fname: "",
     lname: ""
   });
@@ -29,6 +29,16 @@ function App() {
     console.log(event.target.lname.value);
     console.log(event.target.phone.value);
 
+    fetch('http://localhost:3001/', {
+      method: 'POST',
+      body: JSON.stringify({firstName: event.target.fname.value, lastName: event.target.lname.value, phone: event.target.phone.value}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));  
   }
 
   const choices = ['Bridal', 'Party', 'Bridal with party'];
@@ -62,7 +72,7 @@ function App() {
           <input type="text" name="lname" onChange={handleChange}></input><br></br>
           <label>Phone Number: </label>
           <input type="text" name="phone" onChange={handleChange}></input><br></br>
-          <Button variant="contained" color="secondary">Book!</Button>
+          <Button type="submit" variant="contained" color="secondary">Book!</Button>
         </form>
       </header>
     </div>
