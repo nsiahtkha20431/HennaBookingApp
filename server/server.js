@@ -15,3 +15,7 @@ app.listen(PORT, () => { //function to start a server that listens on the PORT
   console.log(`Henna App listening on port ${PORT}`); //when server is ready, callback funtion prnts this
 });
 
+app.post('/', (req, res) => { 
+    console.log(req.body); //req.body --> "request body"; prints the body of the POST request
+    // res.send('Hello, World!');
+});
