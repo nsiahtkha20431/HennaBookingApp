@@ -7,7 +7,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
 function App() {
-  const initialFormData = Object.freeze({ 
+  const initialFormData = Object.freeze({
     fname: "",
     lname: ""
   });
@@ -31,7 +31,9 @@ function App() {
 
     fetch('http://localhost:3001/', {
       method: 'POST',
-      body: JSON.stringify({firstName: event.target.fname.value, lastName: event.target.lname.value, phone: event.target.phone.value}),
+      body: JSON.stringify({firstName: event.target.fname.value,
+        lastName: event.target.lname.value,
+        phone: event.target.phone.value}),
       headers: {
         'Content-Type': 'application/json'
       }
