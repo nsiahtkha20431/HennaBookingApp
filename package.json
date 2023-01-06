@@ -13,6 +13,7 @@
     "cors": "^2.8.5",
     "curl": "^0.1.4",
     "express": "^4.18.2",
+    "jest": "^27.5.1",
     "nodemon": "^2.0.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,6 +25,7 @@
     "dev-server": "nodemon ./server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-server": "jest --watchAll ./server",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
