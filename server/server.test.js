@@ -1,3 +1,5 @@
+import got from 'got';
+
 describe('server functional tests', () => {
   test('the best flavor is grapefruit', () => {
     const theBestFlavor = 'grapefruit';
@@ -9,20 +11,18 @@ describe('server functional tests', () => {
     expect(theBestFlavor).toBe('grapefruit');
   });
 
-  test('Making a post request to / on the server should respond with "Hello World!"', () => {
+  test('Making a post request to / on the server should respond with "Hello World!"', async () => {
     // Making a post request to / means making a post request to the root of the server
-    // The root of the server basically means the "/" after localohst:3001
+    // The root of the server basically means the "/" after localhost:3001
     // This is similar to the line in app.js which does fetch('http://localhost:3001/',.. 
-    // this is cat ascii
-    //  /\_/\
-    // ( o.o ) // a heart 4 u!
-    //  > ^ <  //    ( V )
-    // (  -  ) //     \ /
-    //  | | |  //      v
-    //  | | |  //
-    //  | | |
-    //  | | |
-    //   V V
+    const {data} = await got.post('https://localhost:3001', {
+	    json: {
+		    Name: 'Nishat'
+	    }
+    }).json();
+    expect(data.Name).toBe('Nishat');
+    console.log('Hello World!'); 
+
     // What you want to do is make a post request with a package that you have installed. This
     // might be the 'got' package.
 
