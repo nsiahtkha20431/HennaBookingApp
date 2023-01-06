@@ -22,13 +22,13 @@ describe('server functional tests', () => {
     //  | | |  //
     //  | | |
     //  | | |
-    //   V V 
+    //   V V
     // What you want to do is make a post request with a package that you have installed. This
     // might be the 'got' package.
 
     // After you make the request, you should be able to get the response body and check that it
     // is equal to "Hello World!"
-    
+
     // You can check things using assertions, eg `expect(theBestFlavor).toBe('grapefruit');`
     // Make sure that you have the server started as another process while you're running the test,
     // or the requests will go nowhere!
