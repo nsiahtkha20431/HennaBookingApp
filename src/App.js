@@ -6,16 +6,16 @@ import ButtonGroup from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
-function App() {
+function App() { //function for the whole app
   const initialFormData = Object.freeze({
     fname: "",
     lname: ""
   });
 
-  const [formData, updateFormData] = React.useState(initialFormData);
+  const [formData, updateFormData] = React.useState(initialFormData); // what does this do?
 
-  const handleChange = (e) => {
-    updateFormData({
+  const handleChange = (e) => { //function called when "BOOK!" button is clicked
+    updateFormData({ 
       ...formData,
 
       // Trimming any whitespace
@@ -29,8 +29,8 @@ function App() {
     console.log(event.target.lname.value);
     console.log(event.target.phone.value);
 
-    fetch('http://localhost:3001/', {
-      method: 'POST',
+    fetch('http://localhost:3001/', { //fetch is used to request data from the server...
+      method: 'POST', // ...arguments are: URL, method, body, header) 
       body: JSON.stringify({firstName: event.target.fname.value,
         lastName: event.target.lname.value,
         phone: event.target.phone.value}),
@@ -43,7 +43,7 @@ function App() {
       .catch(error => console.error(error));  
   }
 
-  const choices = ['Bridal', 'Party', 'Bridal with party'];
+  const choices = ['Bridal', 'Party', 'Bridal with party']; //variable for the dropdown options
   
   return (
     <div className="App">
