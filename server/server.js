@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.post('/', (req, res) => {
     console.log(req.body);
-    writeToFile(FILE_PATH, req.body);
+    writeToFile(req.body);
 });
 
 app.listen(PORT, () => { //function to start a server that listens on the PORT
