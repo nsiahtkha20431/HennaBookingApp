@@ -1,9 +1,9 @@
-const fs = require('fs');
+import fs from 'fs';
+
 const filePath = './database.json';
 
-const writingFile = () => {
-    // def
-    // return x;
+const writeToFile = (jsonStringFromCaller) => {
+    fs.writeFileSync(filePath, JSON.stringify(jsonStringFromCaller));
   }
 
-  export default writingFile;
+  export default writeToFile;
