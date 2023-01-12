@@ -23,8 +23,7 @@
       "web-vitals": "^2.1.4"
     },
     "scripts": {
-      "start": "react-scripts start",
-      "dev-server": "nodemon ./server/server.js --experimental-vm-modules",
+      "dev-server": "nodemon ./server.js --experimental-vm-modules",
       "build": "react-scripts build",
       "test": "react-scripts test",
       "test-server": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll ./server",
