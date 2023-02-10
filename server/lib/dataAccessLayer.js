@@ -10,6 +10,6 @@ const writeToFile = (newBookingEntry) => {
     parsedData.push(newBookingEntry);
 
     fs.writeFileSync(FILE_PATH, JSON.stringify(parsedData, null, 4), 'utf-8');
-};
+  };
 
   export default writeToFile;
