@@ -4,9 +4,10 @@ import React from 'react';
 import dayjs from 'dayjs';
 import Stack from '@mui/material/Stack';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/Button';
+// import ButtonGroup from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -76,6 +77,26 @@ function App() { //function for the whole app
                 onChange={handleChange}
                 renderInput={(params) => <TextField {...params} />}
               /><br></br>
+
+              {/* <TimePicker
+                label="Time"
+                value={value}
+                onChange={handleChange}
+                renderInput={(params) => <TextField {...params} />}
+              /> */}
+              <TextField
+        id="time"
+        label="Booking time"
+        type="time"
+        defaultValue="07:30"
+        InputLabelProps={{
+          shrink: true,
+        }}
+        inputProps={{
+          step: 300, // 5 min
+        }}
+        sx={{ width: 150 }}
+      />
             </Stack>
           </LocalizationProvider>
 
