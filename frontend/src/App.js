@@ -25,9 +25,6 @@ function App() { //function for the whole app
     
   const handleSubmit = (event) => { //function called when "BOOK!" button is clicked; prints the form info submitted
     event.preventDefault();
-    console.log(event.target.fname.value);
-    console.log(event.target.lname.value);
-    console.log(event.target.phone.value);
 
     fetch('http://localhost:3001/', { //fetch is used to request data from the server...
       method: 'POST', // ...arguments are: URL, method, body, header) 
@@ -43,30 +40,16 @@ function App() { //function for the whole app
       .catch(error => console.error(error));  
   }
 
-  const choices = ['Bridal', 'Party', 'Bridal with party']; //variable for the dropdown options
+  const choices = ['Bridal', 'Wedding party', 'Bridal with wedding party', 'Birthday', 'Eid', 'Other event']; //variable for the dropdown options
+  const numOfPeople = ['1', '2', '3', '4', '5', '6']; //variable for the dropdown options
   
+
   return (
     <div className="App">
       <header className="App-header">
         <p>My name is Nishat. Welcome to my henna booking form!</p>
         <p>Please complete the following details to create your booking: </p>
         <form onSubmit={handleSubmit}>
-          <ButtonGroup size="large" aria-label="outlined primary button group" color="secondary" variant="text">
-            <Button type="button" variant="outlined" color="secondary">1 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">2 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">3 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">4 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">5 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">6 PM</Button>
-          </ButtonGroup>
-
-          <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={choices}
-            sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Booking Type" />}
-          />
 
           <br></br><label>First Name: </label>
           <input type="text" name="fname" onChange={handleChange}></input><br></br>
@@ -74,6 +57,33 @@ function App() { //function for the whole app
           <input type="text" name="lname" onChange={handleChange}></input><br></br>
           <label>Phone Number: </label>
           <input type="text" name="phone" onChange={handleChange}></input><br></br>
+          <br></br>
+
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={choices}
+            sx={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Booking Type" />}
+          /> <br></br>
+
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={numOfPeople}
+            sx={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Total number of people" />}
+          /> <br></br>
+
+          <ButtonGroup size="large" aria-label="outlined primary button group" color="secondary" variant="text">
+            <Button type="button" variant="outlined" color="secondary">1 PM</Button>
+            <Button type="button" variant="outlined" color="secondary">2 PM</Button>
+            <Button type="button" variant="outlined" color="secondary">3 PM</Button>
+            <Button type="button" variant="outlined" color="secondary">4 PM</Button>
+            <Button type="button" variant="outlined" color="secondary">5 PM</Button>
+            <Button type="button" variant="outlined" color="secondary">6 PM</Button>
+          </ButtonGroup> <br></br><br></br>
+
           <Button type="submit" variant="contained" color="secondary">Book!</Button>
         </form>
       </header>
