@@ -1,10 +1,15 @@
 // import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import dayjs from 'dayjs';
+import Stack from '@mui/material/Stack';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 function App() { //function for the whole app
   const initialFormData = Object.freeze({
@@ -13,8 +18,11 @@ function App() { //function for the whole app
   });
 
   const [formData, updateFormData] = React.useState(initialFormData); // what does this do?
+  const [value, setValue] = React.useState(dayjs());
 
   const handleChange = (e) => { //function called when "BOOK!" button is clicked
+    setValue(e);
+    
     updateFormData({ 
       ...formData,
 
@@ -59,6 +67,18 @@ function App() { //function for the whole app
           <input type="text" name="phone" onChange={handleChange}></input><br></br>
           <br></br>
 
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Stack spacing={3}>
+              <DesktopDatePicker
+                label="Booking date"
+                inputFormat="MM/DD/YYYY"
+                value={value}
+                onChange={handleChange}
+                renderInput={(params) => <TextField {...params} />}
+              /><br></br>
+            </Stack>
+          </LocalizationProvider>
+
           <Autocomplete
             disablePortal
             id="combo-box-demo"
@@ -75,14 +95,14 @@ function App() { //function for the whole app
             renderInput={(params) => <TextField {...params} label="Total number of people" />}
           /> <br></br>
 
-          <ButtonGroup size="large" aria-label="outlined primary button group" color="secondary" variant="text">
+          {/* <ButtonGroup size="large" aria-label="outlined primary button group" color="secondary" variant="text">
             <Button type="button" variant="outlined" color="secondary">1 PM</Button>
             <Button type="button" variant="outlined" color="secondary">2 PM</Button>
             <Button type="button" variant="outlined" color="secondary">3 PM</Button>
             <Button type="button" variant="outlined" color="secondary">4 PM</Button>
             <Button type="button" variant="outlined" color="secondary">5 PM</Button>
             <Button type="button" variant="outlined" color="secondary">6 PM</Button>
-          </ButtonGroup> <br></br><br></br>
+          </ButtonGroup> <br></br><br></br> */}
 
           <Button type="submit" variant="contained" color="secondary">Book!</Button>
         </form>
