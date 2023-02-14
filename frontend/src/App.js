@@ -64,6 +64,8 @@ function App() { //function for the whole app
           <input type="text" name="fname" onChange={handleChange}></input><br></br>
           <label>Last Name: </label>
           <input type="text" name="lname" onChange={handleChange}></input><br></br>
+          <label>Email: </label>
+          <input type="text" name="email" onChange={handleChange}></input><br></br>
           <label>Phone Number: </label>
           <input type="text" name="phone" onChange={handleChange}></input><br></br>
           <br></br>
@@ -77,7 +79,6 @@ function App() { //function for the whole app
                 onChange={handleChange}
                 renderInput={(params) => <TextField {...params} />}
               /><br></br>
-
               {/* <TimePicker
                 label="Time"
                 value={value}
@@ -85,18 +86,18 @@ function App() { //function for the whole app
                 renderInput={(params) => <TextField {...params} />}
               /> */}
               <TextField
-        id="time"
-        label="Booking time"
-        type="time"
-        defaultValue="07:30"
-        InputLabelProps={{
-          shrink: true,
-        }}
-        inputProps={{
-          step: 300, // 5 min
-        }}
-        sx={{ width: 150 }}
-      />
+                id="time"
+                label="Booking time"
+                type="time"
+                defaultValue="07:30"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                inputProps={{
+                  step: 300, // 5 min
+                }}
+                sx={{ width: 150 }}
+              /> <br></br>
             </Stack>
           </LocalizationProvider>
 
