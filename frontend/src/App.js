@@ -39,6 +39,7 @@ function App() { //function for the whole app
       method: 'POST', // ...arguments are: URL, method, body, header) 
       body: JSON.stringify({firstName: event.target.fname.value,
         lastName: event.target.lname.value,
+        email: event.target.email.value,
         phone: event.target.phone.value}),
       headers: {
         'Content-Type': 'application/json'
@@ -56,11 +57,11 @@ function App() { //function for the whole app
   return (
     <div className="App">
       <header className="App-header">
-        <p>My name is Nishat. Welcome to my henna booking form!</p>
+        <p>Welcome to <a target="blank" href="https://www.instagram.com/nishathennaottawa/"> @nishathennaottawa</a>'s' henna booking form!</p>
         <p>Please complete the following details to create your booking: </p>
         <form onSubmit={handleSubmit}>
 
-          <br></br><label>First Name: </label>
+          {/* <br></br><label>First Name: </label>
           <input type="text" name="fname" onChange={handleChange}></input><br></br>
           <label>Last Name: </label>
           <input type="text" name="lname" onChange={handleChange}></input><br></br>
@@ -68,7 +69,11 @@ function App() { //function for the whole app
           <input type="text" name="email" onChange={handleChange}></input><br></br>
           <label>Phone Number: </label>
           <input type="text" name="phone" onChange={handleChange}></input><br></br>
-          <br></br>
+          <br></br> */}
+          <TextField id="fname" label="First Name" variant="outlined" />
+          <TextField id="lname" label="Last Name" variant="outlined" />
+          <TextField id="email" label="Email" variant="outlined" />
+          <TextField id="phone" label="Phone" variant="outlined" /> <br></br><br></br>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Stack spacing={3}>
@@ -78,26 +83,13 @@ function App() { //function for the whole app
                 value={value}
                 onChange={handleChange}
                 renderInput={(params) => <TextField {...params} />}
-              /><br></br>
-              {/* <TimePicker
+              />
+              <TimePicker
                 label="Time"
                 value={value}
                 onChange={handleChange}
                 renderInput={(params) => <TextField {...params} />}
-              /> */}
-              <TextField
-                id="time"
-                label="Booking time"
-                type="time"
-                defaultValue="07:30"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                inputProps={{
-                  step: 300, // 5 min
-                }}
-                sx={{ width: 150 }}
-              /> <br></br>
+              /><br></br>
             </Stack>
           </LocalizationProvider>
 
@@ -116,16 +108,6 @@ function App() { //function for the whole app
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Total number of people" />}
           /> <br></br>
-
-          {/* <ButtonGroup size="large" aria-label="outlined primary button group" color="secondary" variant="text">
-            <Button type="button" variant="outlined" color="secondary">1 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">2 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">3 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">4 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">5 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">6 PM</Button>
-          </ButtonGroup> <br></br><br></br> */}
-
           <Button type="submit" variant="contained" color="secondary">Book!</Button>
         </form>
       </header>
