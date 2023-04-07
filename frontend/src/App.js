@@ -1,15 +1,15 @@
 // import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import dayjs from 'dayjs';
+import axios from 'axios';
 import Stack from '@mui/material/Stack';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import Button from '@mui/material/Button';
-// import ButtonGroup from '@mui/material/Button';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 function App() { //function for the whole app
@@ -18,10 +18,15 @@ function App() { //function for the whole app
     lname: ""
   });
 
-  const [formData, updateFormData] = React.useState(initialFormData); // what does this do?
+  //all the little consts and variables neeeded 
+  const [formData, updateFormData] = React.useState(initialFormData); 
   const [value, setValue] = React.useState(dayjs());
+  const choices = ['Bridal', 'Wedding party', 'Bridal with wedding party', 'Birthday', 'Eid', 'Other event']; //variable for the dropdown options
+  const numOfPeople = ['1', '2', '3', '4', '5', '6','7', '8', '9', '10+']; //variable for the dropdown options
+  const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
 
-  const handleChange = (e) => { //function called when "BOOK!" button is clicked
+  const handleChange = (e) => { //function called when BOOK button is clicked
     setValue(e);
     
     updateFormData({ 
@@ -32,7 +37,7 @@ function App() { //function for the whole app
     });
   };
     
-  const handleSubmit = (event) => { //function called when "BOOK!" button is clicked; prints the form info submitted
+  const handleSubmit = (event) => { //function called when BOOK button is clicked; prints the form info submitted
     event.preventDefault();
 
     fetch('http://localhost:3001/', { //fetch is used to request data from the server...
@@ -50,8 +55,11 @@ function App() { //function for the whole app
       .catch(error => console.error(error));  
   }
 
-  const choices = ['Bridal', 'Wedding party', 'Bridal with wedding party', 'Birthday', 'Eid', 'Other event']; //variable for the dropdown options
-  const numOfPeople = ['1', '2', '3', '4', '5', '6']; //variable for the dropdown options
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+    setImageUrl(URL.createObjectURL(file));
+  }
   
 
   return (
@@ -61,15 +69,6 @@ function App() { //function for the whole app
         <p>Please complete the following details to create your booking: </p>
         <form onSubmit={handleSubmit}>
 
-          {/* <br></br><label>First Name: </label>
-          <input type="text" name="fname" onChange={handleChange}></input><br></br>
-          <label>Last Name: </label>
-          <input type="text" name="lname" onChange={handleChange}></input><br></br>
-          <label>Email: </label>
-          <input type="text" name="email" onChange={handleChange}></input><br></br>
-          <label>Phone Number: </label>
-          <input type="text" name="phone" onChange={handleChange}></input><br></br>
-          <br></br> */}
           <TextField id="fname" label="First Name" variant="outlined" />
           <TextField id="lname" label="Last Name" variant="outlined" />
           <TextField id="email" label="Email" variant="outlined" />
@@ -89,7 +88,8 @@ function App() { //function for the whole app
                 value={value}
                 onChange={handleChange}
                 renderInput={(params) => <TextField {...params} />}
-              /><br></br>
+              />
+              <br></br>
             </Stack>
           </LocalizationProvider>
 
@@ -108,6 +108,9 @@ function App() { //function for the whole app
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Total number of people" />}
           /> <br></br>
+
+          <input type="file" onChange={handleImageUpload} />
+
           <Button type="submit" variant="contained" color="secondary">Book!</Button>
         </form>
       </header>
