@@ -1,22 +1,17 @@
 [
-    {
-        "firstName": "Nishat",
-        "lastName": "Brahimi",
-        "phone": "6135016297"
-    },
-    {
-        "firstName": "Nishat",
-        "lastName": "4346",
-        "phone": "6135016297"
-    },
-    {
-        "firstName": "Nishat",
-        "lastName": "4346",
-        "phone": "6135016297"
-    },
+    {},
+    {},
     {
         "firstName": "Nishat",
         "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
+        "phone": "6135016297"
+    },
+    {},
+    {
+        "firstName": "Nishat",
+        "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
         "phone": "6135016297"
     },
     {
@@ -39,14 +34,21 @@
     },
     {
         "firstName": "Nishat",
-        "lastName": "Kehn",
+        "lastName": "Brahimi",
         "email": "nishatkhan20431@hotmail.ca",
         "phone": "6135016297"
     },
-    {
-        "firstName": "Yacine",
-        "lastName": "Brahimi",
-        "email": "krazi-khan@hotmail.ca",
-        "phone": "6135016297"
-    }
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
 ]

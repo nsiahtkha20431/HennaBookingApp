@@ -2,7 +2,6 @@
 import './App.css';
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import axios from 'axios';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
@@ -25,6 +24,34 @@ function App() { //function for the whole app
   const numOfPeople = ['1', '2', '3', '4', '5', '6','7', '8', '9', '10+']; //variable for the dropdown options
   const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
+    
+  const handleSubmit = (event) => { //function called when BOOK button is clicked; prints the form info submitted
+    event.preventDefault();
+
+    const theFormData = new FormData();
+    theFormData.append('fistName', event.target.fname.value);
+    theFormData.append('fistName', event.target.fname.value);
+    theFormData.append('fistName', event.target.fname.value);
+    theFormData.append('fistName', event.target.fname.value);
+      if (imageFile) {
+        theFormData.append('image', imageFile);
+      }
+
+    fetch('http://localhost:3001/', { //fetch is used to request data from the server...
+      method: 'POST', // ...arguments are: URL, method, body, header) 
+      body: JSON.stringify(theFormData),
+      // JSON.stringify({firstName: event.target.fname.value,
+      //   lastName: event.target.lname.value,
+      //   email: event.target.email.value,
+      //   phone: event.target.phone.value}),
+      headers: {
+        'Content-Type': 'application/json' //need this to log output on server
+      }
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));  
+  }
 
   const handleChange = (e) => { //function called when BOOK button is clicked
     setValue(e);
@@ -36,24 +63,6 @@ function App() { //function for the whole app
       [e.target.name]: e.target.value.trim()
     });
   };
-    
-  const handleSubmit = (event) => { //function called when BOOK button is clicked; prints the form info submitted
-    event.preventDefault();
-
-    fetch('http://localhost:3001/', { //fetch is used to request data from the server...
-      method: 'POST', // ...arguments are: URL, method, body, header) 
-      body: JSON.stringify({firstName: event.target.fname.value,
-        lastName: event.target.lname.value,
-        email: event.target.email.value,
-        phone: event.target.phone.value}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error));  
-  }
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -93,10 +102,10 @@ function App() { //function for the whole app
             </Stack>
           </LocalizationProvider>
 
-          <Autocomplete
+          <Autocomplete 
             disablePortal
             id="combo-box-demo"
-            options={choices}
+            options={choices} 
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Booking Type" />}
           /> <br></br>
@@ -107,9 +116,11 @@ function App() { //function for the whole app
             options={numOfPeople}
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Total number of people" />}
-          /> <br></br>
+          /> <br></br> 
 
-          <input type="file" onChange={handleImageUpload} />
+          <input type="file" //image upload
+            onChange={handleImageUpload} 
+          /> 
 
           <Button type="submit" variant="contained" color="secondary">Book!</Button>
         </form>
