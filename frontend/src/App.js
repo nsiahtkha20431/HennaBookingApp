@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+// import ImageUpload from "./ImageUpload"; //use this later to update the image upload: https://codesandbox.io/s/vj1q68zm25?file=/src/index.js:61-101
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -29,24 +30,25 @@ function App() { //function for the whole app
     event.preventDefault();
 
     const theFormData = new FormData();
-    theFormData.append('fistName', event.target.fname.value);
-    theFormData.append('fistName', event.target.fname.value);
-    theFormData.append('fistName', event.target.fname.value);
-    theFormData.append('fistName', event.target.fname.value);
+    theFormData.append('firstName', event.target.fname.value);
+    theFormData.append('lastName', event.target.lname.value);
+    theFormData.append('email', event.target.email.value);
+    theFormData.append('phone', event.target.phone.value);
       if (imageFile) {
         theFormData.append('image', imageFile);
       }
 
     fetch('http://localhost:3001/', { //fetch is used to request data from the server...
       method: 'POST', // ...arguments are: URL, method, body, header) 
-      body: JSON.stringify(theFormData),
-      // JSON.stringify({firstName: event.target.fname.value,
-      //   lastName: event.target.lname.value,
-      //   email: event.target.email.value,
-      //   phone: event.target.phone.value}),
-      headers: {
-        'Content-Type': 'application/json' //need this to log output on server
-      }
+      body: 
+      theFormData,
+        // JSON.stringify({firstName: event.target.fname.value,
+        //   lastName: event.target.lname.value,
+        //   email: event.target.email.value,
+        //   phone: event.target.phone.value}),
+      // headers: {
+      //   'Content-Type': 'application/json' //need this to log output on server
+      // }
     })
       .then(response => response.json())
       .then(data => console.log(data))

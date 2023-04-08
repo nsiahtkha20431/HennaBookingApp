@@ -20,21 +20,25 @@ const upload = multer({ storage: storage });
 
 
 app.use(cors()); //allows web pages from any domain to make requests on the server (not automatically allowed becasue of security issues)
-// app.use(express.json());
+app.use(express.json());
 
 // app.post('/', (req, res) => {
 //   // console.log(req.body);
 //   writeToFile(req.body);
 // });
 
-app.post('/', upload.single('image'), (req, res) => { // Add multer middleware to handle file upload
+app.post('/', upload.fields([{ name: 'image' }]),Changein (req, res) => { // Add multer middleware to handle file upload
   // Access form data from req.body and the image from req.file
   console.log(req.body);
   console.log(req.file);
 
   writeToFile(req.body);
 
-  res.json({ message: 'Form data and image received' });
+  res.json({ 
+    message: 'Form data and image received',
+    formData: req.body,
+    file: req.file, 
+  });
 });
 
 app.listen(PORT, () => { //function to start a server that listens on the PORT
