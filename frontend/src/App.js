@@ -28,27 +28,29 @@ function App() { //function for the whole app
     
   const handleSubmit = (event) => { //function called when BOOK button is clicked; prints the form info submitted
     event.preventDefault();
+    // const id = Math.random().toString;
 
-    const theFormData = new FormData();
-    theFormData.append('firstName', event.target.fname.value);
-    theFormData.append('lastName', event.target.lname.value);
-    theFormData.append('email', event.target.email.value);
-    theFormData.append('phone', event.target.phone.value);
-      if (imageFile) {
-        theFormData.append('image', imageFile);
-      }
+    //is this needed??????????????
+    // const theFormData = new FormData();
+    // theFormData.append('firstName', event.target.fname.value);
+    // theFormData.append('lastName', event.target.lname.value);
+    // theFormData.append('email', event.target.email.value);
+    // theFormData.append('phone', event.target.phone.value);
+    // if (imageFile) {
+    //   theFormData.append('image', imageFile);
+    // }
 
-    fetch('http://localhost:3001/', { //fetch is used to request data from the server...
+    fetch('http://localhost:3001/details', { //fetch is used to request data from the server...
       method: 'POST', // ...arguments are: URL, method, body, header) 
       body: 
-      theFormData,
-        // JSON.stringify({firstName: event.target.fname.value,
-        //   lastName: event.target.lname.value,
-        //   email: event.target.email.value,
-        //   phone: event.target.phone.value}),
-      // headers: {
-      //   'Content-Type': 'application/json' //need this to log output on server
-      // }
+      // theFormData,
+        JSON.stringify({firstName: event.target.fname.value,
+          lastName: event.target.lname.value,
+          email: event.target.email.value,
+          phone: event.target.phone.value}),
+        headers: {
+          'Content-Type': 'application/json' //need this to log output on server
+        }
     })
       .then(response => response.json())
       .then(data => console.log(data))

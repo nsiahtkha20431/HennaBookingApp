@@ -27,7 +27,7 @@ app.use(express.json());
 //   writeToFile(req.body);
 // });
 
-app.post('/', upload.fields([{ name: 'image' }]),Changein (req, res) => { // Add multer middleware to handle file upload
+app.post('/image', upload.fields([{ name: 'image' }]), (req, res) => { // Add multer middleware to handle file upload
   // Access form data from req.body and the image from req.file
   console.log(req.body);
   console.log(req.file);
@@ -40,6 +40,32 @@ app.post('/', upload.fields([{ name: 'image' }]),Changein (req, res) => { // Add
     file: req.file, 
   });
 });
+ 
+app.post('/details', (req, res) => {
+  console.log(req.body);
+
+  writeToFile(req.body);
+  
+  res.json({ 
+    message: 'Form data and image received',
+    formData: req.body,
+    file: req.file, 
+  });
+});
+
+// app.post('/', upload.fields([{ name: 'image' }]), (req, res) => { // Add multer middleware to handle file upload
+//   // Access form data from req.body and the image from req.file
+//   console.log(req.body);
+//   console.log(req.file);
+
+//   writeToFile(req.body);
+
+//   res.json({ 
+//     message: 'Form data and image received',
+//     formData: req.body,
+//     file: req.file, 
+//   });
+// });
 
 app.listen(PORT, () => { //function to start a server that listens on the PORT
   console.log(`Henna App listening on port ${PORT}`); //when server is ready, callback funtion prnts this
