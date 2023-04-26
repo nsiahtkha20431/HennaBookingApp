@@ -44,8 +44,6 @@ app.post('/', upload.single('image'), (req, res) => {
   console.log(`Email: ${email}`);
   console.log(`Phone: ${phone}`);
   console.log(`Image: ${image.originalname} (${image.mimetype}, ${image.size} bytes)`);
-
-  writeToFile(req.body);
 });
 
 
