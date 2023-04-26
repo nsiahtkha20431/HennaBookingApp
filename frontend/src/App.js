@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
@@ -28,29 +27,23 @@ function App() { //function for the whole app
     
   const handleSubmit = (event) => { //function called when BOOK button is clicked; prints the form info submitted
     event.preventDefault();
-    // const id = Math.random().toString;
 
-    //is this needed??????????????
-    // const theFormData = new FormData();
-    // theFormData.append('firstName', event.target.fname.value);
-    // theFormData.append('lastName', event.target.lname.value);
-    // theFormData.append('email', event.target.email.value);
-    // theFormData.append('phone', event.target.phone.value);
-    // if (imageFile) {
-    //   theFormData.append('image', imageFile);
-    // }
+    // Create a FormData object
+    const formData = new FormData();
+    formData.append('firstName', event.target.fname.value);
+    formData.append('lastName', event.target.lname.value);
+    formData.append('email', event.target.email.value);
+    formData.append('phone', event.target.phone.value);
+    formData.append('image', imageFile); // Append the image file
 
-    fetch('http://localhost:3001/details', { //fetch is used to request data from the server...
+    //Log the contents of the formData object 
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
+    }
+    
+    fetch('http://localhost:3001/', { //fetch is used to request data from the server...
       method: 'POST', // ...arguments are: URL, method, body, header) 
-      body: 
-      // theFormData,
-        JSON.stringify({firstName: event.target.fname.value,
-          lastName: event.target.lname.value,
-          email: event.target.email.value,
-          phone: event.target.phone.value}),
-        headers: {
-          'Content-Type': 'application/json' //need this to log output on server
-        }
+      body: formData
     })
       .then(response => response.json())
       .then(data => console.log(data))
