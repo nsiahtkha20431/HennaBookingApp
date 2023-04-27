@@ -23,23 +23,29 @@ function App() { //function for the whole app
   const choices = ['Bridal', 'Wedding party', 'Bridal with wedding party', 'Birthday', 'Eid', 'Other event']; //variable for the dropdown options
   const numOfPeople = ['1', '2', '3', '4', '5', '6','7', '8', '9', '10+']; //variable for the dropdown options
   const [imageFile, setImageFile] = useState(null);
-  const [imageUrl, setImageUrl] = useState('');
+  const [timeValue, setTimeValue] = useState(null);
+
     
   const handleSubmit = (event) => { //function called when BOOK button is clicked; prints the form info submitted
     event.preventDefault();
 
     // Create a FormData object
     const formData = new FormData();
+    const bookingDate = dayjs(value).format('DD-MM-YYYY');
+    const bookingTime = timeValue ? dayjs(timeValue).format('HH:mm') : '';
+
     formData.append('firstName', event.target.fname.value);
     formData.append('lastName', event.target.lname.value);
     formData.append('email', event.target.email.value);
     formData.append('phone', event.target.phone.value);
-    formData.append('image', imageFile); // Append the image file
-
-    //Log the contents of the formData object 
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key}:`, value);
+    if (imageFile) {
+      formData.append('image', imageFile); // Append the image file
     }
+    formData.append('bookingDate', bookingDate);
+    formData.append('bookingTime', bookingTime);
+
+    console.log(bookingTime);
+
     
     fetch('http://localhost:3001/', { //fetch is used to request data from the server...
       method: 'POST', // ...arguments are: URL, method, body, header) 
@@ -64,9 +70,11 @@ function App() { //function for the whole app
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     setImageFile(file);
-    setImageUrl(URL.createObjectURL(file));
   }
-  
+
+  const handleTimeChange = (newValue) => {
+    setTimeValue(newValue);
+  };
 
   return (
     <div className="App">
@@ -91,8 +99,9 @@ function App() { //function for the whole app
               />
               <TimePicker
                 label="Time"
-                value={value}
-                onChange={handleChange}
+                value={timeValue}
+                onChange={handleTimeChange}
+                format="HH:mm"
                 renderInput={(params) => <TextField {...params} />}
               />
               <br></br>
