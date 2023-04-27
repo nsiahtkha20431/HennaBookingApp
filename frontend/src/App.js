@@ -1,15 +1,14 @@
-// import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import Stack from '@mui/material/Stack';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+// import ImageUpload from "./ImageUpload"; //use this later to update the image upload: https://codesandbox.io/s/vj1q68zm25?file=/src/index.js:61-101
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import Button from '@mui/material/Button';
-// import ButtonGroup from '@mui/material/Button';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 function App() { //function for the whole app
@@ -18,10 +17,46 @@ function App() { //function for the whole app
     lname: ""
   });
 
-  const [formData, updateFormData] = React.useState(initialFormData); // what does this do?
+  //all the little consts and variables neeeded 
+  const [formData, updateFormData] = React.useState(initialFormData); 
   const [value, setValue] = React.useState(dayjs());
+  const choices = ['Bridal', 'Wedding party', 'Bridal with wedding party', 'Birthday', 'Eid', 'Other event']; //variable for the dropdown options
+  const numOfPeople = ['1', '2', '3', '4', '5', '6','7', '8', '9', '10+']; //variable for the dropdown options
+  const [imageFile, setImageFile] = useState(null);
+  const [timeValue, setTimeValue] = useState(null);
 
-  const handleChange = (e) => { //function called when "BOOK!" button is clicked
+    
+  const handleSubmit = (event) => { //function called when BOOK button is clicked; prints the form info submitted
+    event.preventDefault();
+
+    // Create a FormData object
+    const formData = new FormData();
+    const bookingDate = dayjs(value).format('DD-MM-YYYY');
+    const bookingTime = timeValue ? dayjs(timeValue).format('HH:mm') : '';
+
+    formData.append('firstName', event.target.fname.value);
+    formData.append('lastName', event.target.lname.value);
+    formData.append('email', event.target.email.value);
+    formData.append('phone', event.target.phone.value);
+    if (imageFile) {
+      formData.append('image', imageFile); // Append the image file
+    }
+    formData.append('bookingDate', bookingDate);
+    formData.append('bookingTime', bookingTime);
+
+    console.log(bookingTime);
+
+    
+    fetch('http://localhost:3001/', { //fetch is used to request data from the server...
+      method: 'POST', // ...arguments are: URL, method, body, header) 
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));  
+  }
+
+  const handleChange = (e) => { //function called when BOOK button is clicked
     setValue(e);
     
     updateFormData({ 
@@ -31,44 +66,27 @@ function App() { //function for the whole app
       [e.target.name]: e.target.value.trim()
     });
   };
-    
-  const handleSubmit = (event) => { //function called when "BOOK!" button is clicked; prints the form info submitted
-    event.preventDefault();
 
-    fetch('http://localhost:3001/', { //fetch is used to request data from the server...
-      method: 'POST', // ...arguments are: URL, method, body, header) 
-      body: JSON.stringify({firstName: event.target.fname.value,
-        lastName: event.target.lname.value,
-        phone: event.target.phone.value}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error));  
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
   }
 
-  const choices = ['Bridal', 'Wedding party', 'Bridal with wedding party', 'Birthday', 'Eid', 'Other event']; //variable for the dropdown options
-  const numOfPeople = ['1', '2', '3', '4', '5', '6']; //variable for the dropdown options
-  
+  const handleTimeChange = (newValue) => {
+    setTimeValue(newValue);
+  };
 
   return (
     <div className="App">
       <header className="App-header">
-        <p>My name is Nishat. Welcome to my henna booking form!</p>
+        <p>Welcome to <a target="blank" href="https://www.instagram.com/nishathennaottawa/"> @nishathennaottawa</a>'s' henna booking form!</p>
         <p>Please complete the following details to create your booking: </p>
         <form onSubmit={handleSubmit}>
 
-          <br></br><label>First Name: </label>
-          <input type="text" name="fname" onChange={handleChange}></input><br></br>
-          <label>Last Name: </label>
-          <input type="text" name="lname" onChange={handleChange}></input><br></br>
-          <label>Email: </label>
-          <input type="text" name="email" onChange={handleChange}></input><br></br>
-          <label>Phone Number: </label>
-          <input type="text" name="phone" onChange={handleChange}></input><br></br>
-          <br></br>
+          <TextField id="fname" label="First Name" variant="outlined" />
+          <TextField id="lname" label="Last Name" variant="outlined" />
+          <TextField id="email" label="Email" variant="outlined" />
+          <TextField id="phone" label="Phone" variant="outlined" /> <br></br><br></br>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Stack spacing={3}>
@@ -78,33 +96,22 @@ function App() { //function for the whole app
                 value={value}
                 onChange={handleChange}
                 renderInput={(params) => <TextField {...params} />}
-              /><br></br>
-              {/* <TimePicker
+              />
+              <TimePicker
                 label="Time"
-                value={value}
-                onChange={handleChange}
+                value={timeValue}
+                onChange={handleTimeChange}
+                format="HH:mm"
                 renderInput={(params) => <TextField {...params} />}
-              /> */}
-              <TextField
-                id="time"
-                label="Booking time"
-                type="time"
-                defaultValue="07:30"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                inputProps={{
-                  step: 300, // 5 min
-                }}
-                sx={{ width: 150 }}
-              /> <br></br>
+              />
+              <br></br>
             </Stack>
           </LocalizationProvider>
 
-          <Autocomplete
+          <Autocomplete 
             disablePortal
             id="combo-box-demo"
-            options={choices}
+            options={choices} 
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Booking Type" />}
           /> <br></br>
@@ -115,16 +122,11 @@ function App() { //function for the whole app
             options={numOfPeople}
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Total number of people" />}
-          /> <br></br>
+          /> <br></br> 
 
-          {/* <ButtonGroup size="large" aria-label="outlined primary button group" color="secondary" variant="text">
-            <Button type="button" variant="outlined" color="secondary">1 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">2 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">3 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">4 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">5 PM</Button>
-            <Button type="button" variant="outlined" color="secondary">6 PM</Button>
-          </ButtonGroup> <br></br><br></br> */}
+          <input type="file" //image upload
+            onChange={handleImageUpload} 
+          /> 
 
           <Button type="submit" variant="contained" color="secondary">Book!</Button>
         </form>
