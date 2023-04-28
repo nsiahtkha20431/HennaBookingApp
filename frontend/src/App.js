@@ -24,6 +24,8 @@ function App() { //function for the whole app
   const numOfPeople = ['1', '2', '3', '4', '5', '6','7', '8', '9', '10+']; //variable for the dropdown options
   const [imageFile, setImageFile] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
+  const [bookingType, setBookingType] = useState(null);
+  const [totalPeople, setTotalPeople] = useState(null);
 
     
   const handleSubmit = (event) => { //function called when BOOK button is clicked; prints the form info submitted
@@ -43,9 +45,12 @@ function App() { //function for the whole app
     }
     formData.append('bookingDate', bookingDate);
     formData.append('bookingTime', bookingTime);
+    formData.append('bookingType', bookingType);
+    formData.append('numOfPeople', totalPeople);
 
-    console.log(bookingTime);
-
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
     
     fetch('http://localhost:3001/', { //fetch is used to request data from the server...
       method: 'POST', // ...arguments are: URL, method, body, header) 
@@ -110,17 +115,19 @@ function App() { //function for the whole app
 
           <Autocomplete 
             disablePortal
-            id="combo-box-demo"
+            id="bookingType"
             options={choices} 
             sx={{ width: 300 }}
+            onChange={(_, newValue) => setBookingType(newValue)}
             renderInput={(params) => <TextField {...params} label="Booking Type" />}
           /> <br></br>
 
           <Autocomplete
             disablePortal
-            id="combo-box-demo"
+            id="numOfPeople"
             options={numOfPeople}
             sx={{ width: 300 }}
+            onChange={(_, newValue) => setTotalPeople(newValue)}
             renderInput={(params) => <TextField {...params} label="Total number of people" />}
           /> <br></br> 
 
