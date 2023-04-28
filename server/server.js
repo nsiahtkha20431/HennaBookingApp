@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.post('/', upload.single('image'), (req, res) => {
-  const { firstName, lastName, email, phone, bookingDate, bookingTime } = req.body;
+  const { firstName, lastName, email, phone, bookingDate, bookingTime, bookingType, numOfPeople } = req.body;
   const image = req.file;
 
   const newBookingEntry = {
@@ -35,6 +35,8 @@ app.post('/', upload.single('image'), (req, res) => {
     phone,
     bookingDate,
     bookingTime,
+    bookingType,
+    numOfPeople ,
   };
 
   // Save the booking entry and image filename to the database (if an image is uploaded)
@@ -51,6 +53,8 @@ app.post('/', upload.single('image'), (req, res) => {
   console.log(`Phone: ${phone}`);
   console.log(`Booking Date: ${bookingDate}`);
   console.log(`Booking Time: ${bookingTime}`);
+  console.log(`Booking Type: ${bookingType}`);
+  console.log(`Total Number of People: ${numOfPeople}`);
   if (image) {
     console.log(`Image: ${image.originalname} (${image.mimetype}, ${image.size} bytes)`);
   } else {

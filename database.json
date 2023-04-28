@@ -789,5 +789,375 @@
         "bookingDate": "27-04-2023",
         "bookingTime": "22:15",
         "image": null
+    },
+    {
+        "firstName": "Nishat",
+        "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "00:30",
+        "image": null
+    },
+    {
+        "firstName": "Nishat",
+        "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "00:30",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Nishat",
+        "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "02:45",
+        "bookingType": "Bridal with wedding party",
+        "image": null
+    },
+    {
+        "firstName": "Nishat",
+        "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "02:45",
+        "bookingType": "Bridal with wedding party",
+        "image": null
+    },
+    {
+        "firstName": "Nishat",
+        "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "02:45",
+        "bookingType": "Bridal with wedding party",
+        "image": null
+    },
+    {
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "phone": "",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "null",
+        "image": null
+    },
+    {
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "phone": "",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Other event",
+        "image": null
+    },
+    {
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "phone": "",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Other event",
+        "image": null
+    },
+    {
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "phone": "",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Birthday",
+        "image": null
+    },
+    {
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "phone": "",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "phone": "",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "17-05-2023",
+        "bookingTime": "12:00",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "17-05-2023",
+        "bookingTime": "12:00",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "17-05-2023",
+        "bookingTime": "12:00",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "17-05-2023",
+        "bookingTime": "12:00",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "17-05-2023",
+        "bookingTime": "12:00",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "17-05-2023",
+        "bookingTime": "12:00",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "17-05-2023",
+        "bookingTime": "12:00",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "27-04-2023",
+        "bookingTime": "",
+        "bookingType": "Eid",
+        "image": null
+    },
+    {
+        "firstName": "Nishat",
+        "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:30",
+        "bookingType": "Other event",
+        "image": "uploads/1682656503722.PNG"
+    },
+    {
+        "firstName": "Nishat",
+        "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:30",
+        "bookingType": "Other event",
+        "image": "uploads/1682656515098.PNG"
+    },
+    {
+        "firstName": "Nishat",
+        "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:30",
+        "bookingType": "Other event",
+        "image": "uploads/1682656542491.PNG"
+    },
+    {
+        "firstName": "Nishat",
+        "lastName": "Khan",
+        "email": "khan0432@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:30",
+        "bookingType": "Other event",
+        "image": "uploads/1682657551374.PNG"
+    },
+    {
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "phone": "",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:30",
+        "bookingType": "Other event",
+        "image": "uploads/1682657566962.PNG"
+    },
+    {
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "phone": "",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:30",
+        "bookingType": "Other event",
+        "image": "uploads/1682657568161.PNG"
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:00",
+        "bookingType": "Other event",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:00",
+        "bookingType": "Bridal",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:00",
+        "bookingType": "Bridal",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:00",
+        "bookingType": "Other event",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:00",
+        "bookingType": "Bridal",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:00",
+        "bookingType": "Bridal",
+        "image": null
+    },
+    {
+        "firstName": "Yacine",
+        "lastName": "Brahimi",
+        "email": "krazi-khan@hotmail.ca",
+        "phone": "6135016297",
+        "bookingDate": "28-04-2023",
+        "bookingTime": "13:00",
+        "bookingType": "Bridal",
+        "numOfPeople": "6",
+        "image": null
     }
 ]
